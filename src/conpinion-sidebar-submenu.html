@@ -1,0 +1,59 @@
+<!-- build:process -->
+<!--
+<%= copyright %>
+Element: <%= pkg.name %>
+Version: <%= pkg.version %>
+Description: <%= pkg.description %>
+-->
+<!-- /build -->
+
+<link rel="import" href="../lib/paper-menu/paper-menu.html">
+<link rel="import" href="../lib/paper-menu/paper-submenu.html">
+<link rel="import" href="../lib/conpinion-toggle-icon/conpinion-toggle-icon.html">
+
+<dom-module id="conpinion-sidebar-submenu">
+
+  <template>
+
+    <style>
+      :host {
+        position: relative;
+      }
+
+      paper-menu {
+        padding: 0;
+        margin: 0;
+        margin-left: 1em;
+      }
+
+      conpinion-toggle-icon {
+        position: absolute;
+        right: 0;
+        top: 0;
+        padding-top: 8px;
+      }
+
+      iron-icon {
+        margin-right: 8px;
+      }
+    </style>
+
+    <paper-submenu>
+      <paper-item class="menu-trigger">
+        <iron-icon icon="[[icon]]"></iron-icon>
+        <span>[[label]]</span>
+        <conpinion-toggle-icon active-icon="expand-more" inactive-icon="chevron-left"
+                            active="[[opened]]" on-click="toggle"></conpinion-toggle-icon>
+      </paper-item>
+      <paper-menu class="menu-content">
+        <content></content>
+      </paper-menu>
+    </paper-submenu>
+
+  </template>
+
+  <!-- build:script inline conpinion-sidebar-submenu -->
+  <script src="conpinion-sidebar-submenu.js"></script>
+  <!-- /build -->
+
+</dom-module>

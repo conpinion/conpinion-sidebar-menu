@@ -1,0 +1,68 @@
+
+<!--
+Copyright (c) 2015 TELCAT MULTICOM GmbH. All rights reserved.
+Copyright (c) 2016 conpinion GbR. All rights reserved.
+
+Element: conpinion-sidebar-menu
+Version: 0.1.16
+Description: A sidebar menu web component
+-->
+
+
+<link rel="import" href="../paper-menu/paper-menu.html">
+<link rel="import" href="conpinion-sidebar-item.html">
+<link rel="import" href="conpinion-sidebar-submenu.html">
+
+<dom-module id="conpinion-sidebar-menu">
+
+  <template>
+
+    <style>
+      :host {
+        color: #666666;
+      }
+
+      #menu {
+        margin: 0;
+      }
+    </style>
+
+    <paper-menu id="menu" selected="[[selected]]" attr-for-selected="[[attrForSelected]]"
+                on-iron-select="_itemSelected">
+      <content></content>
+    </paper-menu>
+
+  </template>
+
+<script type="text/javascript">(function() {
+  Polymer({
+    is: 'conpinion-sidebar-menu',
+    properties: {
+      selected: {
+        type: String,
+        notify: true
+      },
+      attrForSelected: {
+        type: String,
+        value: 'name'
+      },
+      router: {
+        type: Object
+      }
+    },
+    _itemSelected: function(e) {
+      var item;
+      item = e.detail.item;
+      if (item.nodeName === 'conpinion-SIDEBAR-ITEM') {
+        this.selected = e.detail.item.getAttribute(this.attrForSelected);
+        if (item.route && this.router) {
+          return this.router.go(item.route);
+        }
+      }
+    }
+  });
+
+}).call(this);
+</script>
+
+</dom-module>

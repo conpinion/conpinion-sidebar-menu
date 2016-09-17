@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>conpinion-sidebar-menu</title>
+  <script src='lib/webcomponentsjs/webcomponents-lite.min.js'></script>
+  <link rel="import" href="lib/iron-icons/image-icons.html">
+  <link rel="import" href="build/conpinion-sidebar-menu.html">
+  <link rel="import" href="build/conpinion-sidebar-submenu.html">
+  <link rel="import" href="build/conpinion-sidebar-item.html">
+</head>
+
+<body>
+
+  <h1>conpinion-sidebar-menu</h1>
+
+  <h2>A sidebar menu web component</h2>
+
+  <p>
+    <a href="test/index.html">Click here to run the tests...</a>
+  </p>
+
+  <p>
+    <a href="README.md">Click here to read the documentation...</a>
+  </p>
+
+  <p>
+    <a href="CHANGELOG.md">Click here to read the changelog...</a>
+  </p>
+
+  <h2>Demo</h2>
+
+  <dom-module id="demo-element">
+    <template>
+      <p>Selected menu entry: <span>{{selected}}</span></p>
+      <conpinion-sidebar-menu id="menu" selected="{{selected}}">
+        <conpinion-sidebar-submenu icon="image:filter-1" label="Submenu 1">
+          <conpinion-sidebar-item name="1.1" icon="image:filter-1" name="menu_entry_1-1"
+                               label="Menu Entry 1-1"></conpinion-sidebar-item>
+          <conpinion-sidebar-item name="1.2" icon="image:filter-2" name="/menu_entry_1-2"
+                               label="Menu Entry 1-2"></conpinion-sidebar-item>
+          <conpinion-sidebar-item name="1.3" icon="image:filter-3" name="menu_entry_1-3"
+                               label="Menu Entry 1-3"></conpinion-sidebar-item>
+        </conpinion-sidebar-submenu>
+        <conpinion-sidebar-item name="2" icon="image:filter-2" name="menu_entry_2" label="Menu Entry 2"
+                             route="/route-to-2">
+        </conpinion-sidebar-item>
+        <conpinion-sidebar-submenu icon="image:filter-3" label="Submenu 3">
+          <conpinion-sidebar-item name="3.1" name="menu_entry_3-1" icon="account-box"
+                               label="Menu Entry 3-1"></conpinion-sidebar-item>
+          <conpinion-sidebar-item name="3.2" name="menu_entry_3-2" icon="mail"
+                               label="Menu Entry 3-2"></conpinion-sidebar-item>
+          <conpinion-sidebar-item name="3.3" name="menu_entry_3-3" icon="receipt"
+                               label="Menu Entry 3-3"></conpinion-sidebar-item>
+        </conpinion-sidebar-submenu>
+        <conpinion-sidebar-item name="4" icon="image:filter-4" name="menu_entry_4" label="Menu Entry 4"
+                             route="/route-to-4">
+        </conpinion-sidebar-item>
+      </conpinion-sidebar-menu>
+      <div id="messages"></div>
+    </template>
+  </dom-module>
+
+  <script>
+    Polymer({
+      is: 'demo-element',
+      ready: function() {
+        this.$.menu.router = {
+          go: (function(path) {
+            Polymer.dom(this.$.messages).innerHTML += "Route to: " + path + "<br>";
+          }).bind(this)
+        };
+      }
+    });
+  </script>
+
+  <demo-element></demo-element>
+
+  <script src="//localhost:35729/livereload.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,39 @@
+<!-- build:process -->
+<!--
+<%= copyright %>
+Element: <%= pkg.name %>
+Version: <%= pkg.version %>
+Description: <%= pkg.description %>
+-->
+<!-- /build -->
+
+<link rel="import" href="../lib/paper-menu/paper-menu.html">
+<link rel="import" href="conpinion-sidebar-item.html">
+<link rel="import" href="conpinion-sidebar-submenu.html">
+
+<dom-module id="conpinion-sidebar-menu">
+
+  <template>
+
+    <style>
+      :host {
+        color: #666666;
+      }
+
+      #menu {
+        margin: 0;
+      }
+    </style>
+
+    <paper-menu id="menu" selected="[[selected]]" attr-for-selected="[[attrForSelected]]"
+                on-iron-select="_itemSelected">
+      <content></content>
+    </paper-menu>
+
+  </template>
+
+  <!-- build:script inline conpinion-sidebar-menu -->
+  <script src="conpinion-sidebar-menu.js"></script>
+  <!-- /build -->
+
+</dom-module>

@@ -1,0 +1,40 @@
+<!-- build:process -->
+<!--
+<%= copyright %>
+Element: <%= pkg.name %>
+Version: <%= pkg.version %>
+Description: <%= pkg.description %>
+-->
+<!-- /build -->
+
+<link rel="import" href="../lib/iron-icon/iron-icon.html">
+<link rel="import" href="../lib/paper-item/paper-item.html">
+
+<dom-module id="conpinion-sidebar-item">
+
+  <template>
+
+    <style>
+      paper-item {
+        cursor: pointer;
+      }
+      iron-icon {
+        margin-right: 8px;
+      }
+      :host(.iron-selected) paper-item {
+        font-weight: bold;
+      }
+    </style>
+
+    <paper-item>
+      <iron-icon icon="[[icon]]"></iron-icon>
+      <span>[[label]]</span>
+    </paper-item>
+
+  </template>
+
+  <!-- build:script inline conpinion-sidebar-item -->
+  <script src="conpinion-sidebar-item.js"></script>
+  <!-- /build -->
+
+</dom-module>

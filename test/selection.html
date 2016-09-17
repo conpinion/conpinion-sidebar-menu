@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>conpinion-sidebar-menu selection tests</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <script src="../lib/webcomponentsjs/webcomponents.js"></script>
+  <script src="../lib/web-component-tester/browser.js"></script>
+  <script src="../lib/test-fixture/test-fixture-mocha.js"></script>
+  <script src="../lib/coffee-script/extras/coffee-script.js"></script>
+  <script src="../lib/jquery/dist/jquery.js"></script>
+  <link rel="import" href="../lib/test-fixture/test-fixture.html">
+  <link rel="import" href="../build/conpinion-sidebar-item.html">
+  <link rel="import" href="../build/conpinion-sidebar-menu.html">
+  <link rel="import" href="../build/conpinion-sidebar-submenu.html">
+</head>
+
+<body>
+
+  <test-fixture id="initial">
+    <template>
+      <conpinion-sidebar-menu>
+        <conpinion-sidebar-item></conpinion-sidebar-item>
+      </conpinion-sidebar-menu>
+    </template>
+  </test-fixture>
+
+  <test-fixture id="menuItemSelection">
+    <template>
+      <conpinion-sidebar-menu>
+        <conpinion-sidebar-item name="menu_entry_1" label="Menu Entry 1"></conpinion-sidebar-item>
+        <conpinion-sidebar-item name="menu_entry_2" label="Menu Entry 2"></conpinion-sidebar-item>
+      </conpinion-sidebar-menu>
+    </template>
+  </test-fixture>
+
+  <script type="text/coffeescript">
+
+    element = null
+
+    describe 'initially', ->
+
+      beforeEach -> element = fixture 'initial'
+
+      it 'should not select any menu item', ->
+        expect(element.selected).to.be.an 'undefined'
+
+    describe 'when a menu item is selected', ->
+
+      beforeEach -> element = fixture 'menuItemSelection'
+
+      it 'should change its selection to the menu items valueattr', ->
+        $(element.querySelector('[name="menu_entry_1"]')).trigger 'click'
+        expect(element.selected).to.equal 'menu_entry_1'
+        $(element.querySelector('[name="menu_entry_2"]')).trigger 'click'
+        expect(element.selected).to.equal 'menu_entry_2'
+
+  </script>
+
+</body>
+
+</html>

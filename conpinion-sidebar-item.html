@@ -1,0 +1,57 @@
+
+<!--
+Copyright (c) 2015 TELCAT MULTICOM GmbH. All rights reserved.
+Copyright (c) 2016 conpinion GbR. All rights reserved.
+
+Element: conpinion-sidebar-menu
+Version: 0.1.16
+Description: A sidebar menu web component
+-->
+
+
+<link rel="import" href="../iron-icon/iron-icon.html">
+<link rel="import" href="../paper-item/paper-item.html">
+
+<dom-module id="conpinion-sidebar-item">
+
+  <template>
+
+    <style>
+      paper-item {
+        cursor: pointer;
+      }
+      iron-icon {
+        margin-right: 8px;
+      }
+      :host(.iron-selected) paper-item {
+        font-weight: bold;
+      }
+    </style>
+
+    <paper-item>
+      <iron-icon icon="[[icon]]"></iron-icon>
+      <span>[[label]]</span>
+    </paper-item>
+
+  </template>
+
+<script type="text/javascript">(function() {
+  Polymer({
+    is: 'conpinion-sidebar-item',
+    properties: {
+      icon: {
+        type: String
+      },
+      label: {
+        type: String
+      },
+      route: {
+        type: String
+      }
+    }
+  });
+
+}).call(this);
+</script>
+
+</dom-module>
